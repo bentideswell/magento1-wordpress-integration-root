@@ -1,0 +1,45 @@
+##
+# Root / An Add-on for Magento WordPress Integration
+#
+# Author:			Benn Tideswell
+# URL:				http://fishpig.co.uk/magento/wordpress-integration/root/
+##
+
+11/01/2017 - v1.1.0.8
+- Fixed issue where homepage wasn't being replaced
+
+26/10/2016 - v1.1.0.6
+- Fixed preview issue.
+
+07/06/2015 - v1.1.0.5
+- API Fix. You should also update Magento WordPress Integration
+
+22/09/2015 - v1.1.0.3
+- Fixed issue with 'Blog' breadcrumb item.
+
+04/09/2015 - v1.1.0.0
+- Added licensing to the extension.
+
+24/06/2015 - v1.0.2.5
+- Fixed issues when using WP Page as Magento homepage
+
+11/06/2015 - v1.0.2.3
+- Small fix for Magento WordPress Integration v4.0 compatibility
+
+03/10/2014 - v1.0.2.2
+- Fixed bug that set the 'id' parameter on most controllers when the 'Replace Homepage' option was enabled. Thanks to Seb Ledan for pointing out this bug.
+
+23/04/2014 - v1.0.2.1
+- Added Module name and URL into config.xml
+
+11/03/2014 - v1.0.2.0
+- Small fix for top link
+
+03/03/2014 - v1.0.1.0
+- Fixed issue that stopped products from being saved.
+
+01/03/2014 - v1.0.0.2
+- Removed toplink and breadcrumb when there is no true blog homepage (or a page that is set to display the blog posts)
+
+10/11/2013 - v1.0.0.1
+- Fixed post previews when integrating at root
