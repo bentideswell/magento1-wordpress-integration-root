@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Fishpig_Wordpress_Addon_Root>
-			<version>1.1.0.11</version>
+			<version>1.2.0.0</version>
 			<fishpig>
 				<name>Root</name>
 				<url>http://fishpig.co.uk/magento/wordpress-integration/root/</url>
@@ -71,6 +71,7 @@
 					</wp_addon_root>
 				</observers>
 			</wordpress_get_toplink_label>
+			<!--
 			<wordpress_init_layout_after>
 				<observers>
 					<wp_addon_root>
@@ -80,6 +81,16 @@
 					</wp_addon_root>
 				</observers>
 			</wordpress_init_layout_after>
+			-->
+			<wordpress_breadcrumbs_get_after>
+				<observers>
+					<wp_addon_root>
+						<type>singleton</type>
+						<class>Fishpig_Wordpress_Addon_Root_Helper_Data</class>
+						<method>wordpressBreadcrumbsGetAfterObserver</method>
+					</wp_addon_root>
+				</observers>				
+			</wordpress_breadcrumbs_get_after>
 		</events>
 	</global>
 	<default>

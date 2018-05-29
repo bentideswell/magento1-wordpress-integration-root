@@ -132,7 +132,7 @@ class Fishpig_Wordpress_Addon_Root_Helper_Data extends Fishpig_Wordpress_Helper_
 		return null;
 	}
 	
-	/**
+	/*
 	 * Retrieve the toplink URL
 	 *
 	 * @param Varien_Event_Observer $observer
@@ -149,51 +149,37 @@ class Fishpig_Wordpress_Addon_Root_Helper_Data extends Fishpig_Wordpress_Helper_
 		return $this;
 	}
 	
-	/**
-	 * Fix the breadcrumbs
+	/*
+	 * Setup breadrcrumbs
 	 *
 	 * @param Varien_Event_Observer $observer
 	 * @return $this
 	 */
-	public function initLayoutAfterObserver(Varien_Event_Observer $observer)
+
+	public function wordpressBreadcrumbsGetAfterObserver(Varien_Event_Observer $observer)
 	{
-		if (!$this->isEnabled() || $this->isAdmin()) {
-			return $this;
-		}
-
-		$object = $observer->getEvent()->getObject();
-
-		if ($object instanceof Fishpig_Wordpress_Model_Post) {
-			if ($crumb = $observer->getEvent()->getController()->getCrumb('blog')) {
-				if (!isset($crumb[0]) || !isset($crumb[0]['link'])) {
-					return $this;
-				}
-
-				if ($blogUri = Mage::helper('wordpress/router')->getBlogUri()) {
-					if (strpos($blogUri, '/') !== false) {
-						$crumbLink = rtrim($crumb[0]['link'], '/');
-						$crumbLink = substr($crumbLink, strrpos($crumbLink, '/')+1);
-						
-						if ($crumbLink !== substr($blogUri, 0, strpos($blogUri, '/'))) {
-							$observer->getEvent()->getController()->removeCrumb('blog');
-						}
-					}
-					else {
-						$observer->getEvent()->getController()->removeCrumb('blog');
-					}
-				}
-			}
-		}
-		else {
-			$observer->getEvent()->getController()->removeCrumb('blog');
+		if (!$this->isEnabled()) {
+			return false;
 		}
 		
+		$crumbs = $observer->getEvent()->getTransport()->getCrumbs();
+		$object = $observer->getEvent()->getObject();
+
+		unset($crumbs['blog_home']);
+				
+		if ($this->canReplaceHomepage()) {
+			unset($crumbs['home']);			
+		}
+
+		$observer->getEvent()->getTransport()->setCrumbs($crumbs);
+
 		return $this;
 	}
-
-	/**
+	
+	/*
+	 *
 	 * @return string
-	**/
+	 */
 	public function cmsPageRenderObserver(Varien_Event_Observer $observer)
 	{
 		if ($observer->getEvent()->getPage()->getIdentifier() !== Mage::getStoreConfig('web/default/cms_home_page')) {

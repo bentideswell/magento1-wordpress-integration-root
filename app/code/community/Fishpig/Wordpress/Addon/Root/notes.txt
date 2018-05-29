@@ -1,9 +1,12 @@
 ##
 # Root / An Add-on for Magento WordPress Integration
 #
-# Author:			Benn Tideswell
-# URL:				http://fishpig.co.uk/magento/wordpress-integration/root/
+# Author:			Ben Tideswell
+# URL:				https://fishpig.co.uk/magento/wordpress-integration/root/
 ##
+
+29/05/2018 - 1.2.0.0
+- Added support for new breadcrumb system
 
 11/01/2017 - v1.1.0.8
 - Fixed issue where homepage wasn't being replaced
