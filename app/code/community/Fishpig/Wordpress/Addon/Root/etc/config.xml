@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Fishpig_Wordpress_Addon_Root>
-			<version>1.2.0.0</version>
+			<version>1.2.0.1</version>
 			<fishpig>
 				<name>Root</name>
 				<url>http://fishpig.co.uk/magento/wordpress-integration/root/</url>
