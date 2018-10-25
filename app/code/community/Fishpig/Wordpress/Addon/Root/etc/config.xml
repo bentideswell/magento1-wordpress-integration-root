@@ -2,11 +2,7 @@
 <config>
 	<modules>
 		<Fishpig_Wordpress_Addon_Root>
-			<version>1.2.0.1</version>
-			<fishpig>
-				<name>Root</name>
-				<url>http://fishpig.co.uk/magento/wordpress-integration/root/</url>
-			</fishpig>
+			<version>1.2.0.2</version>
 		</Fishpig_Wordpress_Addon_Root>
 	</modules>
 	<global>
@@ -27,23 +23,23 @@
 		</helpers>
 		<events>
 			<cms_page_render>
-                <observers>
+        <observers>
 					<wp_addon_root>
 						<type>singleton</type>
 						<class>Fishpig_Wordpress_Addon_Root_Helper_Data</class>
 						<method>cmsPageRenderObserver</method>
 					</wp_addon_root>
-                </observers>
+        </observers>
 			</cms_page_render>
 			<controller_front_init_before>
-                <observers>
+        <observers>
 					<wp_addon_root>
 						<type>singleton</type>
 						<class>Fishpig_Wordpress_Addon_Root_Helper_Data</class>
 						<method>controllerFrontInitObserver</method>
 					</wp_addon_root>
-                </observers>
-            </controller_front_init_before>
+        </observers>
+      </controller_front_init_before>
 			<wordpress_get_blog_route>
 				<observers>
 					<wp_addon_root>
@@ -101,24 +97,4 @@
 			</integration>
 		</wordpress>
 	</default>
-	<fishpig>
-		<injection>
-			<Fishpig_Inject_Wordpress_Block_System_Config_Form_Field_License>
-				<Fishpig_Wordpress_Addon_Root>
-					<Block_System_Config_Form_Field_License><ignore /></Block_System_Config_Form_Field_License>
-				</Fishpig_Wordpress_Addon_Root>
-			</Fishpig_Inject_Wordpress_Block_System_Config_Form_Field_License>
-			<Fishpig_Inject_Wordpress_Helper_License>
-				<Fishpig_Wordpress_Addon_Root>
-					<Helper_License><ignore /></Helper_License>
-				</Fishpig_Wordpress_Addon_Root>
-			</Fishpig_Inject_Wordpress_Helper_License>
-		</injection>
-		<encode>
-			<helper_license>app/code/community/Fishpig/Wordpress/Addon/Root/Helper/License.php</helper_license>
-			<helper_mc_router>app/code/community/Fishpig/Wordpress/Addon/Root/Helper/MC/Router.php</helper_mc_router>
-			<helper_data>app/code/community/Fishpig/Wordpress/Addon/Root/Helper/Data.php</helper_data>
-			<block_license>app/code/community/Fishpig/Wordpress/Addon/Root/Block/System/Config/Form/Field/License.php</block_license>
-		</encode>
-	</fishpig>
 </config>
