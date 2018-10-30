@@ -5,6 +5,9 @@
 # URL:				https://fishpig.co.uk/magento/wordpress-integration/root/
 ##
 
+30/10/2018 - 1.2.0.3
+- Added fix for Elementor. Ensure define('COOKIEPATH', '/'); is set in your wp-config.php file.
+
 29/05/2018 - 1.2.0.0
 - Added support for new breadcrumb system
 

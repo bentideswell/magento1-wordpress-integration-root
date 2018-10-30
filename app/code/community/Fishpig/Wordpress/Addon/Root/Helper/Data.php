@@ -49,7 +49,8 @@ class Fishpig_Wordpress_Addon_Root_Helper_Data extends Fishpig_Wordpress_Helper_
 		$app = Mage::app();
 
 		if ('' === trim($app->getRequest()->getPathInfo(), '/')) {
-			if ($app->getRequest()->getParam('preview') === 'true' && ($postId = $app->getRequest()->getParam('p'))) {
+
+			if ($postId = $this->getPreviewId()) {
 				$this->_setHomepageIsReplaced(true);
 				$app->getStore()->setConfig('web/default/front', 'wordpress/post/view');
 			}
@@ -60,6 +61,19 @@ class Fishpig_Wordpress_Addon_Root_Helper_Data extends Fishpig_Wordpress_Helper_
 		}
 		
 		return $this;
+	}
+	
+	protected function getPreviewId()
+	{
+		if (!($params = Mage::app()->getRequest()->getParams())) {
+			return false;
+		}
+		
+		if (strpos(implode('-', array_keys($params)), 'preview') === false) {
+			return false;
+		}
+		
+		return (int)Mage::app()->getRequest()->getParam('p');
 	}
 	
 	/**
