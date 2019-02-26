@@ -73,7 +73,19 @@ class Fishpig_Wordpress_Addon_Root_Helper_Data extends Fishpig_Wordpress_Helper_
 			return false;
 		}
 		
-		return (int)Mage::app()->getRequest()->getParam('p');
+		$paramKeys = array(
+			'p',
+			'page_id',
+			'elementor-preview',
+		);
+		
+		foreach($paramKeys as $paramKey) {
+			if ($postId = (int)Mage::app()->getRequest()->getParam($paramKey)) {
+				return $postId;
+			}
+		}
+		
+		return false;
 	}
 	
 	/**
